@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <title>Document</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a class="logo" href="/">Gym Body<br>academia</a>
+            <a class="logo" href="#telaInicial">Gym Body<br>academia</a>
             <ul class="nav-list">
-                <li><a href="/">SOBRE NÓS</a></li>
-                <li><a href="/">MODALIDADES</a></li> 
-                <li><a href="/">MATRICULE-SE</a></li>
-                <li><a href="/">FALE CONOSCO</a></li>
+                <li><a onclick="scrollToSection(643)">SOBRE NÓS</a></li>
+                <li><a onclick="scrollToSection(1392)">MODALIDADES</a></li> 
+                <li><a onclick="scrollToSection(2052)">MATRICULE-SE</a></li>
             </ul>
         </nav>
-
-
-            <div class="tela-inicial">
+    </header>  
+          <main>          
+            <section  id="telaInicial" class="tela-inicial">
+                <div class="fade-left" data-aos="fade-left">
                 <span class="texto">
                 <span class="paragrafo">
                     "A academia é como a vida: cheia de obstáculos, mas quanto mais você se supera,
                     mais você gosta de lutar." </span><br><br> - Seja um aluno da Gym Body, Abrace os desafios e cresça com eles.        
                 </span>   
             </div>
-            <div class="sobre-nos">
-                <div class="container">
+            </section>
+            <section class="sobre-nos">
+                <div id="sobreNos" class="container">
                     <div class="imagem">
                         <img src="https://img.freepik.com/fotos-premium/uma-academia-com-muitas-maquinas-e-pesos-no-chao_173770-1295.jpg" alt="">
                     </div> 
@@ -42,30 +44,90 @@
                         Junte-se a nós e embarque nesta jornada para uma vida mais saudável e feliz.</p>
                     </div>   
                 </div>
-            </div> 
-            <div class="modalidade">
+            </section> 
+            <section class="modalidade">
                 <div class="container2">
                     <div class="texto-modalidade">
-                        Conheça as<br>
+                       <span class="conheca"> Conheça as</span><br>
                         nossas modalidades
                     </div>
                     <div class="quadros">
-                        <div class="quadro1">
-                            <img class="imagem1" src="https://blog.bodytech.com.br/wp-content/uploads/2019/07/header-musculacao-bt.png" alt="">
-                            <span class="musculacao">
-                                MUSCULAÇÃO
-                            </span>
-                        </div>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front1">
+                                    <Span class="texto-card-front">
+                                        Musculação
+                                    </Span>
+                                </div>
+                                <div class="flip-card-back">
+                                    <div class="textos-quadros">
+                                        <h1 class="titulo-card">Musculação</h1>
+                                        <br>
+                                        <p>Modalidade que usa aparelhos fixos e </p>
+                                        <p>pesos livres. O Aluno terá todos</p>
+                                        <p> os aparelhos na academia a sua </p>
+                                        <p>disposição. A musculação é composta</p>
+                                        <p>por diversos exercicios de força e </p>
+                                        <p>resistência que pode trazer diversos</p>
+                                        <p> benefícios para a saúde,</p>
+                                        <p>como melhorar o condicionamento físico, </p>
+                                        <p>acelerar o metabolismo, diminuir a</p>
+                                        <p>gordura, melhorar a postura e a</p>
+                                        <p>capacidade cardiorrespiratória.</p>  
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
                         <div class="quadro2">
-                            <img class="imagem2" src="https://triibo.com.br/wp-content/uploads/2023/08/iStock-1132086660.jpg" alt="">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                  <div class="flip-card-front2">
+                                    <Span class="texto-card-front">
+                                        Cardio
+                                    </Span>
+                                  </div>
+                                  <div class="flip-card-back">
+                                    <div class="textos-quadros">
+                                        <h1>Cardio</h1>
+                                        <br>
+                                        <p>O Cardio visa adquirir resistência física </p>
+                                        <p> atravésdo fortalecimento do sistema</p>
+                                        <p>  cardiovascular com exercícios de baixa </p>
+                                        <p> e alta intensidade do tipo aeróbicos</p>
+                                        <p>(corrida, ciclismo, e Hit).</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="quadro3">
-                            <img class="imagem3" src="https://landing-pages-smart.s3.amazonaws.com/modalidades-treinos/fitdance/cover.png" alt="">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                  <div class="flip-card-front3">
+                                    <Span class="texto-card-front">
+                                        Dance
+                                    </Span>
+                                  </div>
+                                  <div class="flip-card-back">
+                                    <div class="textos-quadros">
+                                        <h1>FitDance</h1>
+                                        <br>
+                                        <p>Um estilo de dança que reúne diferentes</p> 
+                                        <p>estilos musicais e coreografias que são</p>
+                                        <p>sucessos. Trazendo muitos benefícios</p>
+                                        <p> como fortalecer o sistema muscular,</p>
+                                        <p>melhorar a postura  e flexibilidade.</p>
+                                        <p> ajuda a manter o bom o ritmo cardíaco</p>
+                                        <p> e pressão arterial.</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="matricula">
+            </section>
+            <section class="matricula">
                 <div class="container3">
                     <div class="filho">
                         <div class="texto-matricula">
@@ -126,7 +188,74 @@
                         </div>
                     </div>
                 </div>
-            </div>
-    </header>  
+            </section>
+        </main>
 </body>
 </html>
+
+<script>
+     //Função para definir o valor do scroll
+     
+document.addEventListener("scroll", () => {
+    console.log(window.scrollY)
+})
+function scrollToSection(to) {
+
+  window.scrollTo(0, to);
+
+};
+
+ 
+
+// API - Animação dos elementos ao rolar a página
+
+// ScrollReveal({ distance: '60px' });
+
+// ScrollReveal().reveal('header', {
+
+//   interval: 0,
+
+//   duration: 1000,
+
+//   reset: true,
+
+//   origin: 'top'
+
+// });
+
+ 
+
+// ScrollReveal().reveal('#introduction', {
+
+//   duration: 1000,
+
+//   reset: true,
+
+//   origin: 'left'
+
+// });
+
+ 
+
+// ScrollReveal().reveal('#objective', {
+
+//   duration: 1000,
+
+//   reset: true,
+
+//   origin: 'right'
+
+// });
+
+ 
+
+// ScrollReveal().reveal('#about', {
+
+//   duration: 1000,
+
+//   reset: true,
+
+//   origin: 'left'
+
+// });
+//   </script>
