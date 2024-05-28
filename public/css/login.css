@@ -1,0 +1,103 @@
+body {
+
+    margin: 0px;
+}
+
+.login {
+
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+}
+
+.imagem-login {
+
+    width: 50%;
+    height: 100vh;
+    background-image: url("https://i.pinimg.com/736x/eb/4c/ef/eb4cefe0c24c3e3010394ae4bfd3c9b8.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.texto-login {
+
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.texto-imagem {
+
+    position: absolute;
+    color: white;
+   font-family: sans-serif;
+    margin-top: 7%;
+    font-size: 60px;   
+    
+}
+
+.container-login {
+
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.box-input-login {
+
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.titulo-login {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-family: sans-serif;
+    font-weight: 550;
+}
+
+.input-login {
+
+    width: 305px;
+    height: 30px;
+    margin-top: 5px;
+    border: none;
+    background-color: rgba(192, 192, 192, 0.327);
+}
+
+.botao{
+
+    width: 310px;
+    height: 33px;
+    margin-top: 30px;
+}
+
+.possui-conta{
+
+    margin-top: 5%;
+    font-size: 17px;
+}
+    
+::placeholder{
+
+    font-size: 11px;
+    padding-left: 3px;
+    
+}
+
+
+
