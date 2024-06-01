@@ -23,7 +23,7 @@ function autenticar(req, res) {
                             nome: resultadoAutenticar[0].nome,
                             email: resultadoAutenticar[0].email,
                             cpf: resultadoAutenticar[0].cpf,
-                            atividade: resultadoAutenticar[0].atividade,
+                            plano: resultadoAutenticar[0].plano,
                             whatsapp: resultadoAutenticar[0].whatsapp,
                         });
                     }
@@ -49,10 +49,8 @@ function matricular(req, res) {
     var nome = req.body.nomeServer
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
-    var atividade = req.body.atividadeServer;
+    var plano = req.body.planoServer;
     var whatsapp = req.body.whatsappServer;
-
-    
 
     // Faça as validações dos valores
     
@@ -62,14 +60,14 @@ function matricular(req, res) {
         res.status(400).send("Sua email está indefinida!");
     } else if (cpf == undefined) {
         res.status(400).send("Sua cpf está indefinida!");
-    } else if (atividade == undefined) {
-        res.status(400).send("Sua atividade está indefinida!");
+    } else if (plano == undefined) {
+        res.status(400).send("Seu plano está indefinida!");
     } else if (whatsapp == undefined) {
         res.status(400).send("Seu whatsapp está indefinida!");
     }else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.matricular(nome, email, cpf, atividade, whatsapp)
+        usuarioModel.matricular(nome, email, cpf, plano, whatsapp)
             .then(
                 function (resultado) {
                     res.json(resultado);

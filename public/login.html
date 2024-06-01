@@ -30,13 +30,10 @@
                 </div>
                 <div class="box-input-login">
                     <span>Senha</span>
-                    <input type="text" placeholder="***********" class="input-login" id="senha_input">
+                    <input type="password" placeholder="***********" class="input-login" id="senha_input">
                 </div>
                 <button class="botao" onclick="entrar()">Entrar</button>
                 <div class="possui-conta">
-                    <span>
-                        Não é nosso aluno ? Matricule-se
-                    </span>
                 </div>
             </div>
         </div>
@@ -94,14 +91,11 @@
                     sessionStorage.ID_USUARIO = json.id;
                   //  sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
-                  //  setTimeout(function () {
-                  //    window.location = "./dashboard/cards.html";
-                  //  }, 1000); // apenas para exibir o loading
+                    setTimeout(function () {
+                      window.location = "./dashboard/dashboard.html";
+                    }, 1000); // apenas para exibir o loading
 
                 });
-
-                alert("Sucesso no login");
-
 
             } else {
 
