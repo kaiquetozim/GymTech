@@ -1,6 +1,7 @@
 body {
 
     margin: 0px;
+    font-family: sans-serif;
 }
 
 .login {
@@ -84,7 +85,17 @@ body {
     width: 310px;
     height: 33px;
     margin-top: 30px;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+    font-size: 17px;
 }
+
+.botao:hover {
+    
+    background-color:  #080515e4 ;
+    color: white;
+}
+
 
 .possui-conta{
 
@@ -99,5 +110,17 @@ body {
     
 }
 
+.exibir-erro {
 
+    font-size: 12px;
+    color: red;
+}
+
+.erro-login {
+
+    font-size: 18px;
+    color: red;
+    display: flex;
+    justify-content: center;
+}
 

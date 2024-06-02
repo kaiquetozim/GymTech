@@ -18,8 +18,8 @@
     <div class="login">
         <div class="imagem-login">
             <span class="texto-imagem">
-                GYM BODY 
-            </span> 
+                GYM BODY
+            </span>
         </div>
         <div class="texto-login">
             <div class="container-login">
@@ -27,20 +27,24 @@
                 <div class="box-input-login">
                     <span>Email</span>
                     <input type="text" placeholder="@gmail.com" class="input-login" id="email_input">
+                    <div id="exibirErroEmail" class="exibir-erro"></div>
                 </div>
                 <div class="box-input-login">
                     <span>Senha</span>
                     <input type="password" placeholder="***********" class="input-login" id="senha_input">
+                    <div id="exibirErroSenha" class="exibir-erro"></div>
                 </div>
                 <button class="botao" onclick="entrar()">Entrar</button>
                 <div class="possui-conta">
                 </div>
+
+                <div id="exibirErroLogin" class="erro-login"></div>
             </div>
         </div>
     </div>
-    
-    <!-- <a href="index.html">Inicial</a>-->    
-    
+
+    <!-- <a href="index.html">Inicial</a>-->
+
 </body>
 
 </html>
@@ -49,71 +53,77 @@
 
 
     function entrar() {
-        
+
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+        if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1) {
+
+            exibirErroEmail.innerHTML = "email inválido"
+
+        } else if (senhaVar.length < 8) {
+
+            exibirErroSenha.innerHTML = 'A senha precisa ter mais que 7 caracteres'
+
+            finalizarAguardar();    
+            return false;
+        } else {
+
+            exibirErroEmail.innerHTML =""
+            exibirErroSenha.innerHTML =""
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    alert("Sucesso no login");
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+                        //  sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                        setTimeout(function () {
+                            window.location = "./dashboard/dashboard.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    exibirErroLogin.innerHTML = 'Login incorreto, tente novamente.'
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
             return false;
         }
-        else {
-            //setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                alert("Sucesso no login");
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                  //  sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                      window.location = "./dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
     }
-
     //function sumirMensagem() {
     //    cardErro.style.display = "none"
     //}

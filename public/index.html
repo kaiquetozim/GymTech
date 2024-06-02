@@ -19,7 +19,7 @@
                 <li><a onclick="scrollToSection(643)">SOBRE NÓS</a></li>
                 <li><a onclick="scrollToSection(1392)">MODALIDADES</a></li>
                 <li><a onclick="scrollToSection(2040)">PLANOS</a></li>
-                <li><a  onclick="scrollToSection(2726)">MATRICULE-SE</a></li>
+                <li><a  onclick="scrollToSection(2722)">MATRICULE-SE</a></li>
                 <li><a href="/login.html">ÁREA DO ADMINISTRADOR</a></li>
             </ul>
         </nav>
@@ -216,36 +216,41 @@
                                 <span>
                                     <span>Nome</span>
                                     <input placeholder="Kaique Sotero Tozim" class="input" type="text" id="input_nome">
+                                    <div id="exibirErroNome" class="exibir-erro"></div>
                                 </span>
                             </div>
                             <div class="box-childrem-input">
                                 <span>
                                     <span>Email</span>
-                                    <input placeholder="kaique.tozim@gmail.com" class="input" type="text"
-                                        id="input_email">
+                                    <input placeholder="kaique.tozim@gmail.com" class="input" type="text" id="input_email">
+                                    <div id="exibirErroEmail" class="exibir-erro"></div>
                                 </span>
                             </div>
                             <div class="box-childrem-input">
                                 <span>
                                     <span>CPF</span>
                                     <input placeholder="53908736889" class="input" type="text" id="input_cpf">
+                                    <div id="exibirErroCpf" class="exibir-erro"></div>
                                 </span>
                             </div>
                             <div class="box-childrem-input">
                                 <span>
                                     <span>Plano</span>
+                                    <div class="select">
                                     <select class="input" name="" id="select_plano">
                                         <option value="diamon">Black</option>
                                         <option value="Gold">Gold</option>
                                         <option value="Silver">Silver</option>
                                         <option value="Bronze">Bronze</option>
                                     </select>
+                                </div>
                                 </span>
                             </div>
                             <div class="box-childrem-input">
                                 <span>
                                     <span>WhatsApp</span>
                                     <input placeholder="11982492957" class="input" type="text" id="input_whatsapp">
+                                    <div id="exibirErroWhats" class="exibir-erro"></div>
                                 </span>
                             </div>
                         </div>
@@ -264,6 +269,7 @@
                 <div class="filho2-contato">
                     <span>Sobre nós</span>
                     <span>Nossa modalidades</span>
+                    <span>Planos</span>
                     <span>Matricule - se</span>
                 </div>
             </div>
@@ -298,19 +304,19 @@
 
         if (nomeVar.length <= 3) {
 
-            alert("Seu nome precisa ter mais que 3 caracteres.")
+            exibirErroNome.innerHTML = "Nome inválido"
 
         } else if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1) {
 
-            alert("Email inválido.")
+            exibirErroEmail.innerHTML = "Email inválido."
 
         } else if (cpfVar.length < 11) {
 
-            alert("cpf inválido")
+            exibirErroCpf.innerHTML = "CPF inválido."
 
         } else if (WhatsappVar.length != 11) {
 
-            alert("o whatsapp preicsa conter 11 numeros")
+            exibirErroWhats.innerHTML  = "Numero inválido."
 
             finalizarAguardar();
             return false;

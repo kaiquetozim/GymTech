@@ -497,6 +497,7 @@ p{
 .texto-matricula {
 
    width: 50%;
+   margin-top: 4%;
 }
 
 .formulario {
@@ -542,6 +543,12 @@ p{
     height: 31px;
     width: 290%;
     
+}
+
+ .select select {
+
+    height: 33px;
+    width: 537%;
 }
 
 ::placeholder {
@@ -595,6 +602,15 @@ p{
     
     background-color:  #04044ae4 ;
 }
+
+.exibir-erro {
+
+    font-size: 13px;
+    color: red;  
+}
+
+
+
 
 
 
