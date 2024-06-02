@@ -103,9 +103,9 @@ main{
 
 .indicador {
 
-  border: 3px solid black;
+  border-bottom: 3px solid black;
   border-radius: 10px;
-  width: 350px;
+  width: 290px;
   padding: 8px;
   display: flex;
   align-items: center;

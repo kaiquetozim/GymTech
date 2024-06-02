@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/matricula.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <section class="matricula">
+    <div class="container3">
+      <div class="filho">
+        <div class="texto-matricula">
+          <h2>
+            <p>
+              Faça parte da maior academia do Brasil!
+            </p>
+          </h2>
+          <span class="texto-matricula">
+            <p>Todo o suporte, conforto estrutura necessário fazer a mehor hora do seu dia!</p>
+            <p>Adquira hábitos de vida mais saudáveis, em busca de sua melhor versão, de uma forma mais leve.
+              Na GymBody Academia, você terá a possibilidade de cumprir com seus objetivos através de atividades como,
+              musculação, dança, aeróbio e muito mais!</p>
+            <p>Treine com equipamentos modernos e profissionais altamente qualificados em uma academia de ponta.</p>
+            <p>O movimento é você.</p>
+          </span>
+        </div>
+        <div class="formulario">
+          <span class="titulo-formulario">
+            Preencha seus dados e faça <span class="texto1-matricula"> matrícula agora mesmo!</span>
+          </span>
+          <div class="box-input">
+            <div class="box-childrem-input">
+              <span>
+                <span>Nome</span>
+                <input placeholder="Kaique Sotero Tozim" class="input" type="text" id="input_nome">
+              </span>
+            </div>
+            <div class="box-childrem-input">
+              <span>
+                <span>Email</span>
+                <input placeholder="kaique.tozim@gmail.com" class="input" type="text" id="input_email">
+              </span>
+            </div>
+            <div class="box-childrem-input">
+              <span>
+                <span>CPF</span>
+                <input placeholder="53908736889" class="input" type="text" id="input_cpf">
+              </span>
+            </div>
+            <div class="box-childrem-input">
+              <span>
+                <span>Plano</span>
+                <select class="input" name="" id="select_plano">
+                  <option value="diamon">Diamond</option>
+                  <option value="Gold">Gold</option>
+                  <option value="Silver">Silver</option>
+                  <option value="Bronze">Bronze</option>
+                </select>
+              </span>
+            </div>
+            <div class="box-childrem-input">
+              <span>
+                <span>WhatsApp</span>
+                <input placeholder="11982492957" class="input" type="text" id="input_whatsapp">
+              </span>
+            </div>
+          </div>
+          <button class="botao_matricula" onclick="matricular()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</body>
+</html>
+
+<script>
+
+  function matricular() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = input_nome.value;
+    var emailVar = input_email.value;
+    var cpfVar = input_cpf.value;
+    var planoVar = select_plano.value;
+    var WhatsappVar = input_whatsapp.value
+
+    if (nomeVar.length <= 3) {
+
+      alert("Seu nome precisa ter mais que 3 caracteres.")
+
+    } else if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.') == -1) {
+
+      alert("Email inválido.")
+
+    }else if(cpfVar.length < 11) {
+
+        alert("cpf inválido")
+
+    }else if(WhatsappVar.length != 11) {
+
+      alert("o whatsapp preicsa conter 11 numeros")
+    
+      finalizarAguardar();
+      return false;
+    } else {
+      // setInterval(sumirMensagem, 5000);
+    
+    // Enviando o valor da nova input
+    fetch("/usuarios/matricular", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        cpfServer: cpfVar,
+        planoServer: planoVar,
+        whatsappServer: WhatsappVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          // cardErro.style.display = "block";
+
+          /*mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";*/
+
+          alert("Sucesso no cadastro")
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "1000");
+
+          // limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+}
+
+</script>

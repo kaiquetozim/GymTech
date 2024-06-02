@@ -18,10 +18,24 @@ function matricular(nome, email, cpf, plano, whatsapp) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO usuario(nome, email, cpf, plano, whatsapp) VALUES ('${nome}', '${email}', '${cpf}', '${plano}', ${whatsapp});
+        INSERT INTO Cliente(nome, email, cpf, whatsapp) VALUES ('${nome}', '${email}', '${cpf}', ${whatsapp});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    
+    var mes = new Date().getMonth() + 1;
+    var ano = new Date().getFullYear();
+
+    var resultadoSql = database.executar(instrucaoSql);
+
+    resultadoSql.then((value) => {
+        var instrucaoSql2 = `
+        INSERT INTO matricula(mes, ano, fk_cliente, fk_plano) VALUES (${mes}, ${ano}, ${value.insertId}, ${plano});
+        `;
+
+        database.executar(instrucaoSql2)
+    });
+
+    return resultadoSql;
 }
 
 module.exports = {
