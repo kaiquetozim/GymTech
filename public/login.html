@@ -21,9 +21,6 @@
             </span>
         </div>
         <div class="texto-login">
-            <div>
-                <i class="material-symbols-outlined">First</i>
-            </div>
             <div class="container-login">
                 <span class="titulo-login">LOGIN</span>
                 <div class="box-input-login">
@@ -39,7 +36,6 @@
                 <button class="botao" onclick="entrar()">Entrar</button>
                 <div class="possui-conta">
                 </div>
-
                 <div id="exibirErroLogin" class="erro-login"></div>
             </div>
         </div>
@@ -93,8 +89,6 @@
                 if (resposta.ok) {
                     console.log(resposta);
 
-                    alert("Sucesso no login");
-
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
@@ -105,7 +99,7 @@
 
                         setTimeout(function () {
                             window.location = "./dashboard/dashboard.html";
-                        }, 1000); // apenas para exibir o loading
+                        }, 2000); // apenas para exibir o loading
 
                     });
 

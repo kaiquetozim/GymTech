@@ -609,6 +609,49 @@ p{
     color: red;  
 }
 
+#modal {
+
+    width: 450px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    border: none;
+    margin-left: 35%;
+    margin-top: 13%;
+    
+}
+
+
+.sucesso-matricula {
+
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    margin-top: 7%;
+}
+
+.finalizar-cadastro {
+
+    
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+    color: rgb(88, 91, 88);
+    margin-top: 5%;
+}
+
+.botaoModal {
+
+    background-color: silver;
+    display: flex;
+    margin-left: 88%;
+    border-radius: 4px;    
+    padding: 3px;
+}
+
 
 
 

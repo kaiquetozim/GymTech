@@ -19,7 +19,7 @@
                 <li><a onclick="scrollToSection(643)">SOBRE NÓS</a></li>
                 <li><a onclick="scrollToSection(1392)">MODALIDADES</a></li>
                 <li><a onclick="scrollToSection(2040)">PLANOS</a></li>
-                <li><a  onclick="scrollToSection(2722)">MATRICULE-SE</a></li>
+                <li><a onclick="scrollToSection(2722)">MATRICULE-SE</a></li>
                 <li><a href="/login.html">ÁREA DO ADMINISTRADOR</a></li>
             </ul>
         </nav>
@@ -222,7 +222,8 @@
                             <div class="box-childrem-input">
                                 <span>
                                     <span>Email</span>
-                                    <input placeholder="kaique.tozim@gmail.com" class="input" type="text" id="input_email">
+                                    <input placeholder="kaique.tozim@gmail.com" class="input" type="text"
+                                        id="input_email">
                                     <div id="exibirErroEmail" class="exibir-erro"></div>
                                 </span>
                             </div>
@@ -237,13 +238,13 @@
                                 <span>
                                     <span>Plano</span>
                                     <div class="select">
-                                    <select class="input" name="" id="select_plano">
-                                        <option value="1">Black</option>
-                                        <option value="2">Gold</option>
-                                        <option value="3">Silver</option>
-                                        <option value="4">Bronze</option>
-                                    </select>
-                                </div>
+                                        <select class="input" name="" id="select_plano">
+                                            <option value="1">Black</option>
+                                            <option value="2">Gold</option>
+                                            <option value="3">Silver</option>
+                                            <option value="4">Bronze</option>
+                                        </select>
+                                    </div>
                                 </span>
                             </div>
                             <div class="box-childrem-input">
@@ -274,7 +275,23 @@
                 </div>
             </div>
         </section>
-     </main>
+        <section>
+            <div class="modal-matricula">
+            <dialog id="modal">
+                <button class="botaoModal" onclick="modal.close()">Fechar</button>
+                <div class="container-modal">
+
+                    <span class="sucesso-matricula">
+                        Pré cadastro realizado com sucesso !
+                    </span>
+                    <span class="finalizar-cadastro">
+                        Compareça na Gym Body para finalizar a matricula
+                    </span>
+                </div>
+            </div>
+            </dialog>
+        </section>
+    </main>
 </body>
 
 </html>
@@ -301,10 +318,10 @@
         var cpfVar = input_cpf.value;
         var planoVar = select_plano.value;
         var WhatsappVar = input_whatsapp.value
-        exibirErroNome.innerHTML =""
+        exibirErroNome.innerHTML = ""
         exibirErroEmail.innerHTML = ""
-        exibirErroCpf.innerHTML =""
-        exibirErroWhats.innerHTML  = ""
+        exibirErroCpf.innerHTML = ""
+        exibirErroWhats.innerHTML = ""
 
         if (nomeVar.length <= 3) {
 
@@ -320,12 +337,13 @@
 
         } else if (WhatsappVar.length != 11) {
 
-            exibirErroWhats.innerHTML  = "Numero inválido."
+            exibirErroWhats.innerHTML = "Numero inválido."
 
             finalizarAguardar();
             return false;
         } else {
             // setInterval(sumirMensagem, 5000);
+            modal.showModal()
 
             // Enviando o valor da nova input
             fetch("/usuarios/matricular", {
@@ -351,11 +369,10 @@
 
                         /*mensagem_erro.innerHTML =
                           "Cadastro realizado com sucesso! Redirecionando para tela de Login...";*/
+                          modal.showModal()
 
-                        alert("Sucesso no cadastro")
-
-                       // setTimeout(() => {
-                         //   window.location = "login.html";
+                        // setTimeout(() => {
+                        //   window.location = "login.html";
                         //}, "1000");
 
                         // limparFormulario();
