@@ -124,6 +124,9 @@ body {
     justify-content: center;
 }
 
+.botao-sair {
 
-
-
+    display: flex;
+    margin-left: 650px;
+    margin-top: 2%;
+}

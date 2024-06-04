@@ -38,16 +38,16 @@
     <main>
         <div class="indicadores">
             <div class="indicador">
-                <span id="ano-matricula" class="texto-indicador"></span>
-                <span id="total-matricula-ano" class="valor-indicador"></span>
+                <span id="anoMatricula" class="texto-indicador"></span>
+                <span id="IdtotalMatriculaAno" class="valor-indicador"></span>
             </div>
             <div class="indicador">
-                <span id="mes-matricula" class="texto-indicador"></span>
-                <span id="total-matricula-mes" class="valor-indicador"></span>
+                <span id="mesMatricula" class="texto-indicador"></span>
+                <span id="totalMatriculaMes" class="valor-indicador"></span>
             </div>
             <div class="indicador">
-                <span id="faturamento-matricula-ano" class="texto-indicador"></span>
-                <span style="color: rgb(86, 184, 86); font-weight: bold; font-size: 30px;" class="texto-indicador" id="faturamento-matricula"></span>
+                <span id="faturamentoMatriculaAno" class="texto-indicador"></span>
+                <span style="color: rgb(86, 184, 86); font-weight: bold; font-size: 30px;" class="texto-indicador" id="faturamentoMatricula"></span>
             </div>
         </div>
         <div class="graficos">
@@ -79,9 +79,10 @@
                 [10, "Novembro"],
                 [11, "Dezembro"]
             ]);
-            let totalMatriculaAno = 0;
-            $("#ano-matricula").text("Matriculas no ano de " + new Date().getFullYear());
-            $("#mes-matricula").text("Matriculas no mês atual (" + mesesMap.get(new Date().getMonth()) + ")");
+       
+            anoMatricula.innerHTML = `Matriculas no ano de  ${new Date().getFullYear()}`
+            mesMatricula.innerHTML = `Matriculas no mês atual ${ mesesMap.get(new Date().getMonth())}`
+
             fetch("/dashboard/consultarMatriculaPorAnoAgrupadoPorMes", {
                 method: "GET",
                 headers: {
@@ -95,27 +96,34 @@
                     resposta.json().then(dados => {
 
                         let quantidadeMatriculasMesMap = new Map();
+                        let totalMatriculaAno = 0;
 
                         var mesAtual = new Date().getMonth() + 1;
                         for (let i = 0; i < dados.length; i++) {
 
                             totalMatriculaAno += dados[i].quantidade;
+
                             if (dados[i].mes == mesAtual) {
-                                $("#total-matricula-mes").text(dados[i].quantidade);
+
+                                totalMatriculaMes.innerHTML = dados[i].quantidade
                             }
                             quantidadeMatriculasMesMap.set(dados[i].mes, dados[i].quantidade);
                         }
-                        $("#total-matricula-ano").text(totalMatriculaAno);
+
+                        IdtotalMatriculaAno.innerHTML = totalMatriculaAno
 
                         const meses = [];
                         const quantidadeMatriculasMes = [];
+                        
                         for (let i = 0; i < mesAtual; i++) {
 
                             meses.push(mesesMap.get(i));
-                            if (quantidadeMatriculasMesMap.get(i + 1) != undefined) {
-                                quantidadeMatriculasMes.push(quantidadeMatriculasMesMap.get(i + 1));
-                            } else {
+                            if (quantidadeMatriculasMesMap.get(i + 1) == undefined) {
+
                                 quantidadeMatriculasMes.push(0);
+                            } else {
+                                
+                                quantidadeMatriculasMes.push(quantidadeMatriculasMesMap.get(i + 1));
                             }
                         }
 
@@ -228,8 +236,9 @@
                     // acessando a resposta da requisição
                     resposta.json().then(dados => {
 
-                        $("#faturamento-matricula-ano").text("Faturamento (" + new Date().getFullYear() + ")");
-                        $("#faturamento-matricula").text(parseFloat(dados[0].valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+                        faturamentoMatriculaAno.innerHTML = `Faturamento (${new Date().getFullYear()}) `
+                        faturamentoMatricula.innerHTML = (parseFloat(dados[0].valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+                        
                         console.log(parseFloat(dados[0].valor).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
                     })
 

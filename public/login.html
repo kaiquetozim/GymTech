@@ -21,6 +21,7 @@
             </span>
         </div>
         <div class="texto-login">
+            <button class="botao-sair" onclick="sair()">Voltar</button>
             <div class="container-login">
                 <span class="titulo-login">LOGIN</span>
                 <div class="box-input-login">
@@ -49,6 +50,10 @@
 
 <script>
 
+    function sair() {
+
+        window.location = "/index.html";
+    }
 
     function entrar() {
 
@@ -87,7 +92,7 @@
                 console.log("ESTOU NO THEN DO entrar()!")
 
                 if (resposta.ok) {
-                    console.log(resposta);
+                    console.log(resposta);  
 
                     resposta.json().then(json => {
                         console.log(json);
