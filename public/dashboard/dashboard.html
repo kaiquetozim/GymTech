@@ -92,6 +92,7 @@
 
                 if (resposta.ok) {
 
+    
                     // acessando a resposta da requisição
                     resposta.json().then(dados => {
 
@@ -224,7 +225,7 @@
             })
 
 
-            fetch("/dashboard/consultarTotalArrecadadosPorAno", {
+            fetch(  "/dashboard/consultarTotalArrecadadosPorAno", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
